@@ -29,7 +29,8 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
   z-index: 40;
   display: flex;
   align-items: center;
-  gap: 16px;
+  flex-wrap: nowrap;
+  gap: 12px;
   height: var(--header);
   padding: 0 24px;
   background: #fff;
@@ -37,6 +38,7 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
 }
 
 .brand {
+  flex: 0 0 auto;
   font-size: 16px;
   font-weight: 700;
   letter-spacing: -0.03em;
@@ -44,14 +46,17 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
 
 .menu-links {
   display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
+  flex-wrap: nowrap;
+  gap: 2px;
+  min-width: 0;
+  overflow-x: auto;
 }
 
 .menu-links a {
   padding: 6px 8px;
   color: var(--muted);
   font-size: 14px;
+  white-space: nowrap;
 }
 
 .menu-links a:hover,
@@ -66,10 +71,17 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
   padding: 4px 10px;
 }
 
+.top-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+  flex: 0 0 auto;
+}
+
 .search {
   position: relative;
-  margin-left: auto;
-  width: min(280px, 32vw);
+  width: 220px;
 }
 
 .search input {
