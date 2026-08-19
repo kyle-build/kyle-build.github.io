@@ -1,0 +1,13 @@
+<article class="card">
+  <a class="card-main" href="<%= url_for('/learning/' + track.slug + '/') %>">
+    <div class="card-meta">
+      <span class="kicker"><%= track.title %></span>
+      <span class="status status-<%= track.status %>"><%= track.status === 'active' ? '进行中' : '待迁入' %></span>
+    </div>
+    <h3><%= track.title %></h3>
+    <p><%= track.summary %></p>
+  </a>
+  <p class="card-actions">
+    <a class="github-link" href="https://github.com/kyle-build/<%= track.repo %>" target="_blank" rel="noopener">GitHub</a>
+  </p>
+</article>

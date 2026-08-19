@@ -1,0 +1,21 @@
+<%
+  var currentPath = '/' + String(page.path || '').replace(/index\.html$/, '');
+  if (currentPath.length > 1 && currentPath.slice(-1) !== '/') currentPath += '/';
+  if (currentPath === '/index/') currentPath = '/';
+  var isInterview = currentPath.indexOf('/interview/') === 0;
+  var isLearning = !isInterview;
+%>
+<header class="nav">
+  <div class="nav-inner">
+    <button class="nav-toggle" type="button" aria-label="打开目录" aria-expanded="false">目录</button>
+    <a class="brand" href="<%= url_for('/') %>">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span><%= config.title %></span>
+    </a>
+    <nav class="nav-links">
+      <a href="<%= url_for('/') %>" class="<%= isLearning ? 'is-active' : '' %>">Learning</a>
+      <a href="<%= url_for('/interview/') %>" class="<%= isInterview ? 'is-active' : '' %>">Interview</a>
+    </nav>
+    <a class="nav-github" href="<%= isInterview ? 'https://github.com/kyle-build/interview-code-base' : 'https://github.com/kyle-build' %>" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</header>

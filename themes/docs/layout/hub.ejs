@@ -1,0 +1,43 @@
+<section class="page-head">
+  <p class="eyebrow"><%= page.eyebrow || 'Docs' %></p>
+  <h1><%= page.title %></h1>
+  <% if (page.description) { %>
+    <p class="lede"><%= page.description %></p>
+  <% } %>
+</section>
+
+<% if (page.kind === 'tracks') { %>
+  <div class="card-grid">
+    <% (site.data.tracks || []).forEach(function(track) { %>
+      <%- partial('_partial/track-card', { track: track }) %>
+    <% }) %>
+  </div>
+<% } else if (page.kind === 'repos') { %>
+  <div class="repo-groups">
+    <% ['learning', 'lab'].forEach(function(group) { %>
+      <section class="section">
+        <h2><%= group === 'learning' ? 'Learning 仓库' : '其他仓库' %></h2>
+        <div class="repo-table">
+          <% (site.data.repos || []).filter(function(repo) { return repo.group === group; }).forEach(function(repo) { %>
+            <% var track = null; (site.data.tracks || []).forEach(function(item) { if (item.repo === repo.name) track = item; }); %>
+            <div class="repo-row">
+              <% if (track) { %>
+                <a href="<%= url_for('/learning/' + track.slug + '/') %>"><strong><%= repo.name %></strong></a>
+              <% } else { %>
+                <strong><%= repo.name %></strong>
+              <% } %>
+              <span><%= repo.desc %></span>
+              <a class="github-link" href="https://github.com/kyle-build/<%= repo.name %>" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          <% }) %>
+        </div>
+      </section>
+    <% }) %>
+  </div>
+<% } %>
+
+<% if (page.content) { %>
+  <div class="prose">
+    <%- page.content %>
+  </div>
+<% } %>

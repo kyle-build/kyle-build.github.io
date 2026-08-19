@@ -1,0 +1,22 @@
+<section class="page-head">
+  <p class="eyebrow">Track</p>
+  <h1><%= page.category %></h1>
+  <% var track = null; (site.data.tracks || []).forEach(function(item) { if (item.title === page.category) track = item; }); %>
+  <p class="lede">这个分类下的笔记，对应一条学习轨道。</p>
+  <% if (track) { %>
+    <p class="card-actions">
+      <a class="github-link" href="https://github.com/kyle-build/<%= track.repo %>" target="_blank" rel="noopener">GitHub：<%= track.repo %></a>
+    </p>
+  <% } %>
+</section>
+
+<div class="post-list">
+  <% page.posts.forEach(function(post) { %>
+    <article class="post-row">
+      <time><%= date(post.date, 'YYYY.MM.DD') %></time>
+      <div>
+        <h3><a href="<%= url_for(post.path) %>"><%= post.title %></a></h3>
+      </div>
+    </article>
+  <% }) %>
+</div>

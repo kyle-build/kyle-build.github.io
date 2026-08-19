@@ -1,0 +1,15 @@
+<article class="doc">
+  <header class="doc-hero">
+    <p class="eyebrow"><%= page.module === 'interview' ? 'Interview' : 'Learning' %></p>
+    <h1><%= page.title %></h1>
+    <% if (page.description) { %>
+      <p class="lede"><%= page.description %></p>
+    <% } %>
+    <% if (page.github) { %>
+      <p><a class="github-link" href="<%= page.github %>" target="_blank" rel="noopener">GitHub</a></p>
+    <% } %>
+  </header>
+  <div class="prose">
+    <%- page.content %>
+  </div>
+</article>

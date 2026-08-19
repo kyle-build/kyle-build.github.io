@@ -1,0 +1,19 @@
+<% var meta = (site.data.modules && site.data.modules.learning) || {}; %>
+<article class="doc">
+  <header class="doc-hero">
+    <p class="eyebrow">Module</p>
+    <h1>Learning</h1>
+    <p class="lede"><%= meta.intro || config.description %></p>
+  </header>
+  <div class="prose">
+    <p>从左侧目录进入各条轨道。代码实验留在原仓库，这里只放已经讲清楚的结论。</p>
+    <ul>
+      <% (site.data.tracks || []).forEach(function(track) { %>
+        <li>
+          <a href="<%= url_for('/learning/' + track.slug + '/') %>"><%= track.title %></a>
+          — <%= track.summary %>
+        </li>
+      <% }) %>
+    </ul>
+  </div>
+</article>

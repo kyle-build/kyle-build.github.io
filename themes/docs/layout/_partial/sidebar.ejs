@@ -1,0 +1,67 @@
+<%
+  function norm(p) {
+    p = String(p || '/').replace(/index\.html$/, '');
+    if (p.charAt(0) !== '/') p = '/' + p;
+    if (p === '/index/' || p === '/index') return '/';
+    if (p.length > 1 && p.slice(-1) !== '/') p += '/';
+    return p;
+  }
+  var current = norm(page.path);
+  if (page.path === 'index.html') current = '/';
+  var isInterview = current.indexOf('/interview/') === 0;
+  var modules = site.data.modules || {};
+  var github = isInterview
+    ? ((site.data.interview && site.data.interview.github) || modules.interview.github)
+    : 'https://github.com/kyle-build';
+%>
+<aside class="sidebar">
+  <% if (isInterview) { %>
+    <p class="sidebar-title">Interview</p>
+    <% (site.data.interview.groups || []).forEach(function(group) { %>
+      <p class="sidebar-group"><%= group.title %></p>
+      <ul>
+        <% (group.items || []).forEach(function(item) { %>
+          <% var href = url_for(item.path); var active = current === norm(item.path); %>
+          <li>
+            <a class="<%= active ? 'is-active' : '' %>" href="<%= href %>"><%= item.title %></a>
+          </li>
+        <% }) %>
+      </ul>
+    <% }) %>
+  <% } else { %>
+    <p class="sidebar-title">Learning</p>
+    <ul class="sidebar-root">
+      <li>
+        <a class="<%= current === '/' || current === '/learning/' ? 'is-active' : '' %>" href="<%= url_for('/') %>">总览</a>
+      </li>
+    </ul>
+    <% (site.data.tracks || []).forEach(function(track) { %>
+      <%
+        var trackHref = url_for('/learning/' + track.slug + '/');
+        var trackActive = current === norm('/learning/' + track.slug + '/');
+        var notes = [];
+        site.posts.sort('date').each(function(post) {
+          var hit = false;
+          post.categories.each(function(cat) { if (cat.name === track.title) hit = true; });
+          if (hit) notes.push(post);
+        });
+      %>
+      <p class="sidebar-group">
+        <a class="<%= trackActive ? 'is-active' : '' %>" href="<%= trackHref %>"><%= track.title %></a>
+      </p>
+      <% if (notes.length) { %>
+        <ul>
+          <% notes.forEach(function(post) { %>
+            <% var href = url_for(post.path); var active = current === norm(post.path); %>
+            <li>
+              <a class="<%= active ? 'is-active' : '' %>" href="<%= href %>"><%= post.title %></a>
+            </li>
+          <% }) %>
+        </ul>
+      <% } %>
+    <% }) %>
+  <% } %>
+  <p class="sidebar-foot">
+    <a class="github-link" href="<%= github %>" target="_blank" rel="noopener">GitHub</a>
+  </p>
+</aside>

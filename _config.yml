@@ -1,0 +1,94 @@
+# Hexo Configuration
+# Docs: https://hexo.io/docs/configuration.html
+
+# Site
+title: Kyle
+subtitle: 技术总结与学习轨道
+description: 把分散在 GitHub 上的 learning 仓库，收敛成一份可检索的技术笔记。
+keywords: Kyle,技术总结,前端,React,JavaScript,Hexo
+author: Kyle
+language: zh-CN
+timezone: Asia/Shanghai
+
+# URL
+url: https://kyle-build.github.io
+permalink: notes/:title/
+permalink_defaults:
+pretty_urls:
+  trailing_index: true
+  trailing_html: true
+
+# Directory
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: notes
+category_dir: tracks
+code_dir: downloads/code
+i18n_dir: :lang
+skip_render:
+
+# Writing
+new_post_name: :title.md
+default_layout: post
+titlecase: false
+external_link:
+  enable: true
+  field: site
+  exclude: ''
+filename_case: 0
+render_drafts: false
+post_asset_folder: true
+relative_link: false
+future: true
+syntax_highlighter: highlight.js
+highlight:
+  line_number: true
+  auto_detect: false
+  tab_replace: ''
+  wrap: true
+  hljs: false
+prismjs:
+  preprocess: true
+  line_number: true
+  tab_replace: ''
+
+# Home page
+index_generator:
+  path: ''
+  per_page: 6
+  order_by: -date
+
+# Category & Tag
+default_category: notes
+category_map:
+  React: react
+  JavaScript: javascript
+  Vue: vue
+  Lynx: lynx
+  Go: go
+  Linux: linux
+  Git: git
+  站点: site
+tag_map:
+
+meta_generator: false
+
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+updated_option: mtime
+
+per_page: 12
+pagination_dir: page
+
+include:
+exclude:
+ignore:
+
+# Extensions
+theme: docs
+
+# Deployment — GitHub Pages 用户站
+# 推送本仓库到 kyle-build.github.io 后，可用 GitHub Actions 生成静态页
+deploy:
+  type: ''

@@ -1,0 +1,10 @@
+learning:
+  title: Learning
+  path: /
+  github: https://github.com/kyle-build
+  intro: 把 GitHub 上的 *-learning 仓库收敛成可检索的笔记。左侧是目录，点进去看正文。
+interview:
+  title: Interview
+  path: /interview/
+  github: https://github.com/kyle-build/interview-code-base
+  intro: 前端面试复习模块。结构和 interview-code-base 对齐，后续把仓库正文迁到这里。

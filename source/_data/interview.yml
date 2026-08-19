@@ -1,0 +1,28 @@
+github: https://github.com/kyle-build/interview-code-base
+groups:
+  - title: 导航
+    items:
+      - title: 复习路线
+        path: /interview/roadmap/
+      - title: 高频考点
+        path: /interview/checklist/
+  - title: 知识
+    items:
+      - title: 基础
+        path: /interview/knowledge/foundation/
+      - title: 框架
+        path: /interview/knowledge/framework/
+      - title: 工程化
+        path: /interview/knowledge/engineering/
+      - title: 架构
+        path: /interview/knowledge/architecture/
+      - title: 运行时
+        path: /interview/knowledge/runtime/
+  - title: 题目
+    items:
+      - title: 八股
+        path: /interview/questions/fundamentals/
+      - title: 手写
+        path: /interview/questions/handwrite/
+      - title: 场景题
+        path: /interview/questions/scenario/

@@ -1,0 +1,56 @@
+- name: react-core-learning
+  desc: React 核心学习，含 mini-react 与浏览器调度笔记。
+  lang: JavaScript
+  group: learning
+- name: js-core-learning
+  desc: JavaScript 核心与微前端上报策略。
+  lang: JavaScript
+  group: learning
+- name: vue-core-learning
+  desc: Vue 核心学习。
+  lang: Java
+  group: learning
+- name: lynx-core-learning
+  desc: Lynx 核心学习。
+  lang: ''
+  group: learning
+- name: golang-core-learning
+  desc: Go 核心学习。
+  lang: ''
+  group: learning
+- name: linux-core-learning
+  desc: Linux 核心学习。
+  lang: ''
+  group: learning
+- name: git-learning
+  desc: Git 学习记录。
+  lang: ''
+  group: learning
+- name: algorithm
+  desc: 算法刷题记录。
+  lang: Java
+  group: lab
+- name: css-layout-lab
+  desc: CSS 布局实验。
+  lang: HTML
+  group: lab
+- name: interview-code-base
+  desc: 面试代码底稿。
+  lang: JavaScript
+  group: lab
+- name: quick-trace
+  desc: 前端监控。
+  lang: TypeScript
+  group: lab
+- name: Codigo
+  desc: 工程实验。
+  lang: TypeScript
+  group: lab
+- name: knowledge-base
+  desc: 知识库。
+  lang: ''
+  group: lab
+- name: AI-agent
+  desc: Agent 相关实验。
+  lang: ''
+  group: lab

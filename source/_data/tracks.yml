@@ -1,0 +1,35 @@
+- slug: react
+  title: React
+  repo: react-core-learning
+  summary: Fiber、调度与从零手写 mini-react。本地已有 docs 和可运行实验。
+  status: active
+- slug: javascript
+  title: JavaScript
+  repo: js-core-learning
+  summary: 语言核心、运行时，以及微前端上报等差异化设计。
+  status: pending
+- slug: vue
+  title: Vue
+  repo: vue-core-learning
+  summary: Vue 运行时与响应式核心。
+  status: pending
+- slug: lynx
+  title: Lynx
+  repo: lynx-core-learning
+  summary: Lynx 跨端渲染与核心链路。
+  status: pending
+- slug: go
+  title: Go
+  repo: golang-core-learning
+  summary: Go 语言与运行时核心。
+  status: pending
+- slug: linux
+  title: Linux
+  repo: linux-core-learning
+  summary: 文件系统等操作系统基础。本地已有章节骨架。
+  status: active
+- slug: git
+  title: Git
+  repo: git-learning
+  summary: 版本工作流与协作习惯。
+  status: pending

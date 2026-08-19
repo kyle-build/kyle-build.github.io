@@ -1,0 +1,27 @@
+<% var track = null; (site.data.tracks || []).forEach(function(item) { if (item.slug === page.slug) track = item; }); %>
+<article class="doc">
+  <header class="doc-hero">
+    <p class="eyebrow">Learning</p>
+    <h1><%= page.title %></h1>
+    <% if (track) { %>
+      <p class="lede"><%= track.summary %></p>
+      <p><a class="github-link" href="https://github.com/kyle-build/<%= track.repo %>" target="_blank" rel="noopener">GitHub：<%= track.repo %></a></p>
+    <% } %>
+  </header>
+  <div class="prose">
+    <%- page.content %>
+    <% var notes = []; site.posts.sort('date').each(function(post) {
+      post.categories.each(function(cat) { if (cat.name === page.title) notes.push(post); });
+    }); %>
+    <% if (notes.length) { %>
+      <h2>笔记</h2>
+      <ul>
+        <% notes.forEach(function(post) { %>
+          <li><a href="<%= url_for(post.path) %>"><%= post.title %></a></li>
+        <% }) %>
+      </ul>
+    <% } else { %>
+      <p>这条轨道的笔记还没迁入，先从左侧目录进到这里。源码仓库用上面的 GitHub 链接打开。</p>
+    <% } %>
+  </div>
+</article>

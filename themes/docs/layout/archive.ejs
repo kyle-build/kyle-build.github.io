@@ -1,0 +1,34 @@
+<section class="page-head">
+  <p class="eyebrow">Notes</p>
+  <h1><%= page.title || '技术总结' %></h1>
+  <p class="lede">从 learning 仓库和日常实验里沉淀下来的结论，按时间排列。</p>
+</section>
+
+<div class="post-list">
+  <% page.posts.forEach(function(post) { %>
+    <article class="post-row">
+      <time><%= date(post.date, 'YYYY.MM.DD') %></time>
+      <div>
+        <h3><a href="<%= url_for(post.path) %>"><%= post.title %></a></h3>
+        <% if (post.categories && post.categories.length) { %>
+          <p class="meta-line">
+            <% post.categories.each(function(cat) { %>
+              <span><%= cat.name %></span>
+            <% }) %>
+          </p>
+        <% } %>
+      </div>
+    </article>
+  <% }) %>
+</div>
+
+<% if (page.total > 1) { %>
+  <nav class="pager">
+    <% if (page.prev) { %>
+      <a href="<%= url_for(page.prev_link) %>">上一页</a>
+    <% } %>
+    <% if (page.next) { %>
+      <a href="<%= url_for(page.next_link) %>">下一页</a>
+    <% } %>
+  </nav>
+<% } %>
