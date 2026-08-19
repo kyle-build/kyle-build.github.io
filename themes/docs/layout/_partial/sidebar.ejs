@@ -9,15 +9,19 @@
   var current = norm(page.path);
   if (page.path === 'index.html') current = '/';
   var isInterview = current.indexOf('/interview/') === 0;
-  var modules = site.data.modules || {};
   var github = isInterview
-    ? ((site.data.interview && site.data.interview.github) || modules.interview.github)
+    ? 'https://github.com/kyle-build/interview-code-base'
     : 'https://github.com/kyle-build';
 %>
 <aside class="sidebar">
   <% if (isInterview) { %>
     <p class="sidebar-title">Interview</p>
-    <% (site.data.interview.groups || []).forEach(function(group) { %>
+    <ul class="sidebar-root">
+      <li>
+        <a class="<%= current === '/interview/' ? 'is-active' : '' %>" href="<%= url_for('/interview/') %>">总览</a>
+      </li>
+    </ul>
+    <% ((site.data.interview && site.data.interview.groups) || []).forEach(function(group) { %>
       <p class="sidebar-group"><%= group.title %></p>
       <ul>
         <% (group.items || []).forEach(function(item) { %>

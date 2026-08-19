@@ -1,6 +1,8 @@
 # Kyle
 
-Hexo 个人站点，用来展示技术总结，并把 [kyle-build](https://github.com/kyle-build?tab=repositories) 下的 `*-learning` 仓库收敛到同一处。
+Hexo 站点，发布在 GitHub Pages 用户站：<https://kyle-build.github.io>
+
+源码在 `source` 分支，生成结果在 `main`（Pages 读取这个分支）。
 
 ## 本地预览
 
@@ -8,24 +10,21 @@ Hexo 个人站点，用来展示技术总结，并把 [kyle-build](https://githu
 
 ```bash
 nvm use
-npm start
+pnpm install
+pnpm start
 ```
 
 打开 `http://localhost:4000`。
 
-## 写笔记
+## 发布
+
+推到 `source` 后，GitHub Actions 会构建并更新 `https://kyle-build.github.io`。
 
 ```bash
-npx hexo new "文章标题"
+git push origin source
 ```
 
-在 front matter 里加上轨道分类，例如 `React`、`JavaScript`、`Linux`。
+## 模块
 
-## 目录
-
-- `source/_posts/`：技术总结
-- `source/_data/tracks.yml`：学习轨道
-- `source/_data/repos.yml`：仓库索引
-- `themes/docs/`：简约文档风主题
-
-线上域名按 GitHub Pages 用户站准备：`https://kyle-build.github.io`。需要的话可以再把这个仓库接到已有的 `kyle-build.github.io`。
+- Learning：对应 `*-learning` 仓库
+- Interview：对应 `interview-code-base`，后续迁入正文

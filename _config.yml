@@ -82,13 +82,15 @@ per_page: 12
 pagination_dir: page
 
 include:
+  - .nojekyll
 exclude:
 ignore:
 
 # Extensions
 theme: docs
 
-# Deployment — GitHub Pages 用户站
-# 推送本仓库到 kyle-build.github.io 后，可用 GitHub Actions 生成静态页
+# Deployment — 推送到 kyle-build.github.io 的 main，供 GitHub Pages 用户站使用
 deploy:
-  type: ''
+  type: git
+  repo: https://github.com/kyle-build/kyle-build.github.io.git
+  branch: main
