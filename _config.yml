@@ -94,3 +94,4 @@ deploy:
   type: git
   repo: https://github.com/kyle-build/kyle-build.github.io.git
   branch: main
+  ignore_hidden: false
