@@ -1,30 +1,50 @@
 # Kyle
 
-Hexo 站点，发布在 GitHub Pages 用户站：<https://kyle-build.github.io>
+个人技术笔记，发布在 <https://kyle-build.github.io>
 
-源码在 `source` 分支，生成结果在 `main`（Pages 读取这个分支）。
+首页是卡片墙；顶栏是大类（React、JavaScript、Vue、Lynx、Go、Linux、Git、Interview）；点进某一类后，左侧是该模块的章节目录。
 
-## 本地预览
+## 怎么补充内容
 
-需要 Node 20+。
+样式在 `themes/docs/` 里，**加笔记不会覆盖主题**。每次部署都是「源码 + 主题」重新生成静态页，不是在旧 HTML 上打补丁。
+
+1. 新增一篇笔记：
+
+```bash
+npx hexo new "文章标题"
+```
+
+2. 打开 `source/_posts/文章标题.md`，把分类改成对应大类：
+
+```yaml
+title: 文章标题
+categories:
+  - React
+```
+
+可用分类：`React`、`JavaScript`、`Vue`、`Lynx`、`Go`、`Linux`、`Git`、`Interview`。
+
+3. 本地看效果：
 
 ```bash
 nvm use
-pnpm install
 pnpm start
 ```
 
-打开 `http://localhost:4000`。
-
-## 发布
-
-推到 `source` 后，GitHub Actions 会构建并更新 `https://kyle-build.github.io`。
+4. 推到 GitHub，Actions 会自动构建并更新线上站点：
 
 ```bash
+git add source/_posts
+git commit -m "Add a React note"
 git push origin source
 ```
 
-## 模块
+不要手改 `public/` 或 `main` 分支里的生成文件。自定义样式只改 `themes/docs/source/css/style.css`。
 
-- Learning：对应 `*-learning` 仓库
-- Interview：对应 `interview-code-base`，后续迁入正文
+## 目录
+
+- `source/_posts/`：笔记正文
+- `source/_data/nav.yml`：顶栏大类
+- `source/_data/tracks.yml`：学习模块卡片
+- `source/_data/interview.yml`：面试侧栏目录
+- `themes/docs/`：页面样式，不会被新增 Markdown 覆盖

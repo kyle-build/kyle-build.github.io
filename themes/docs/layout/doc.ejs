@@ -1,14 +1,12 @@
-<article class="doc">
-  <header class="doc-hero">
-    <p class="eyebrow"><%= page.module === 'interview' ? 'Interview' : 'Learning' %></p>
-    <h1><%= page.title %></h1>
-    <% if (page.description) { %>
-      <p class="lede"><%= page.description %></p>
-    <% } %>
-    <% if (page.github) { %>
-      <p><a class="github-link" href="<%= page.github %>" target="_blank" rel="noopener">GitHub</a></p>
-    <% } %>
-  </header>
+<article class="article">
+  <div class="crumb"><%= page.module === 'interview' ? 'Interview' : '笔记' %> →</div>
+  <h1><%= page.title %></h1>
+  <% if (page.description) { %>
+    <p class="lede"><%= page.description %></p>
+  <% } %>
+  <% if (page.github) { %>
+    <p><a class="ext" href="<%= page.github %>" target="_blank" rel="noopener">GitHub 仓库</a></p>
+  <% } %>
   <div class="prose">
     <%- page.content %>
   </div>

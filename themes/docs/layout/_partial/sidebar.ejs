@@ -6,17 +6,43 @@
     if (p.length > 1 && p.slice(-1) !== '/') p += '/';
     return p;
   }
-  var current = norm(page.path);
-  if (page.path === 'index.html') current = '/';
+  function notesFor(title) {
+    var notes = [];
+    site.posts.sort('date').each(function(post) {
+      var hit = false;
+      post.categories.each(function(cat) { if (cat.name === title) hit = true; });
+      if (hit) notes.push(post);
+    });
+    return notes;
+  }
+  var current = page.path === 'index.html' ? '/' : norm(page.path);
+  var isHome = current === '/';
   var isInterview = current.indexOf('/interview/') === 0;
-  var github = isInterview
-    ? 'https://github.com/kyle-build/interview-code-base'
-    : 'https://github.com/kyle-build';
+  var track = null;
+  (site.data.tracks || []).forEach(function(item) {
+    if (current.indexOf('/learning/' + item.slug + '/') === 0) track = item;
+  });
+  if (!track && page.categories) {
+    page.categories.each(function(cat) {
+      (site.data.tracks || []).forEach(function(item) {
+        if (item.title === cat.name) track = item;
+      });
+    });
+  }
 %>
 <aside class="sidebar">
-  <% if (isInterview) { %>
+  <% if (isHome) { %>
+    <p class="sidebar-title">全部模块</p>
+    <ul>
+      <li><a href="#learning">学习笔记</a></li>
+      <li><a href="#interview">面试</a></li>
+      <% (site.data.tracks || []).forEach(function(item) { %>
+        <li><a href="#<%= item.slug %>"><%= item.title %></a></li>
+      <% }) %>
+    </ul>
+  <% } else if (isInterview) { %>
     <p class="sidebar-title">Interview</p>
-    <ul class="sidebar-root">
+    <ul>
       <li>
         <a class="<%= current === '/interview/' ? 'is-active' : '' %>" href="<%= url_for('/interview/') %>">总览</a>
       </li>
@@ -25,47 +51,34 @@
       <p class="sidebar-group"><%= group.title %></p>
       <ul>
         <% (group.items || []).forEach(function(item) { %>
-          <% var href = url_for(item.path); var active = current === norm(item.path); %>
           <li>
-            <a class="<%= active ? 'is-active' : '' %>" href="<%= href %>"><%= item.title %></a>
+            <a class="<%= current === norm(item.path) ? 'is-active' : '' %>" href="<%= url_for(item.path) %>"><%= item.title %></a>
           </li>
         <% }) %>
       </ul>
     <% }) %>
-  <% } else { %>
-    <p class="sidebar-title">Learning</p>
-    <ul class="sidebar-root">
+  <% } else if (track) { %>
+    <p class="sidebar-title"><%= track.title %></p>
+    <ul>
       <li>
-        <a class="<%= current === '/' || current === '/learning/' ? 'is-active' : '' %>" href="<%= url_for('/') %>">总览</a>
+        <a class="<%= current === norm('/learning/' + track.slug + '/') ? 'is-active' : '' %>" href="<%= url_for('/learning/' + track.slug + '/') %>">总览</a>
       </li>
     </ul>
-    <% (site.data.tracks || []).forEach(function(track) { %>
-      <%
-        var trackHref = url_for('/learning/' + track.slug + '/');
-        var trackActive = current === norm('/learning/' + track.slug + '/');
-        var notes = [];
-        site.posts.sort('date').each(function(post) {
-          var hit = false;
-          post.categories.each(function(cat) { if (cat.name === track.title) hit = true; });
-          if (hit) notes.push(post);
-        });
-      %>
-      <p class="sidebar-group">
-        <a class="<%= trackActive ? 'is-active' : '' %>" href="<%= trackHref %>"><%= track.title %></a>
-      </p>
-      <% if (notes.length) { %>
-        <ul>
-          <% notes.forEach(function(post) { %>
-            <% var href = url_for(post.path); var active = current === norm(post.path); %>
-            <li>
-              <a class="<%= active ? 'is-active' : '' %>" href="<%= href %>"><%= post.title %></a>
-            </li>
-          <% }) %>
-        </ul>
-      <% } %>
-    <% }) %>
+    <% var notes = notesFor(track.title); %>
+    <% if (notes.length) { %>
+      <p class="sidebar-group">章节</p>
+      <ul>
+        <% notes.forEach(function(post) { %>
+          <li>
+            <a class="<%= current === norm(post.path) ? 'is-active' : '' %>" href="<%= url_for(post.path) %>"><%= post.title %></a>
+          </li>
+        <% }) %>
+      </ul>
+    <% } %>
+  <% } else { %>
+    <p class="sidebar-title">目录</p>
+    <ul>
+      <li><a href="<%= url_for('/') %>">返回首页</a></li>
+    </ul>
   <% } %>
-  <p class="sidebar-foot">
-    <a class="github-link" href="<%= github %>" target="_blank" rel="noopener">GitHub</a>
-  </p>
 </aside>

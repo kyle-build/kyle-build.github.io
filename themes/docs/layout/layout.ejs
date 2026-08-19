@@ -8,7 +8,7 @@
   <link rel="icon" href="<%= url_for('/images/favicon.svg') %>" type="image/svg+xml">
   <link rel="stylesheet" href="<%= url_for('/css/style.css') %>">
 </head>
-<body>
+<body class="<%= is_home() ? 'is-home' : 'is-doc' %>">
   <%- partial('_partial/header') %>
   <div class="shell">
     <div class="sidebar-backdrop"></div>
@@ -17,6 +17,7 @@
       <%- body %>
     </main>
   </div>
+  <button class="to-top" type="button" aria-label="回到顶部">↑</button>
   <script src="<%= url_for('/js/main.js') %>"></script>
 </body>
 </html>
