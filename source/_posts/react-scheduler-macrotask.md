@@ -2,6 +2,7 @@
 title: React 调度为什么不用微任务
 date: 2026-08-19
 module: learning
+order: 2
 categories:
   - React
 ---

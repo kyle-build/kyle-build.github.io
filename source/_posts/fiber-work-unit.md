@@ -1,6 +1,7 @@
 ---
 title: Fiber 为什么要把工作切成小单元
 date: 2026-08-19
+order: 1
 categories:
   - React
 ---

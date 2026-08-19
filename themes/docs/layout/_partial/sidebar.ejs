@@ -7,13 +7,7 @@
     return p;
   }
   function notesFor(title) {
-    var notes = [];
-    site.posts.sort('date').each(function(post) {
-      var hit = false;
-      post.categories.each(function(cat) { if (cat.name === title) hit = true; });
-      if (hit) notes.push(post);
-    });
-    return notes;
+    return notes_for(title);
   }
   var current = page.path === 'index.html' ? '/' : norm(page.path);
   var isHome = current === '/';

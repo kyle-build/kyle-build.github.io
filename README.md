@@ -27,6 +27,7 @@ pnpm start
 ---
 title: Fiber 为什么要把工作切成小单元
 date: 2026-08-19
+order: 1
 categories:
   - React
 ---
@@ -35,6 +36,8 @@ categories:
 ```
 
 `categories` 必须和模块名完全一致，笔记才会出现在该模块左侧章节里。
+
+`order` 决定章节顺序，数字越小越靠前。不写则排到最后，再按 `date` 排。
 
 可用分类：`React`、`JavaScript`、`Vue`、`Lynx`、`Go`、`Linux`、`Git`。
 
@@ -93,6 +96,15 @@ slug: typescript
 ```
 
 然后按第 2 步往这个模块里加笔记，再 `git push origin source`。
+
+### 5. 目录顺序怎么定
+
+- **顶栏大类**：`source/_data/nav.yml` 里谁在前，谁就靠左。
+- **首页卡片**：`source/_data/tracks.yml` 里谁在前，谁就靠上。
+- **面试侧栏**：`source/_data/interview.yml` 里 `groups` / `items` 的先后。
+- **学习模块章节**：每篇笔记 front matter 里的 `order`，从小到大。
+
+YAML 文件都是「写在上面的先显示」，拖动列表即可改顺序。
 
 ### 4. Interview 模块
 

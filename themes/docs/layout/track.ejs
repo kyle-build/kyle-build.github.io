@@ -8,9 +8,7 @@
   <% } %>
   <div class="prose">
     <%- page.content %>
-    <% var notes = []; if (track) { site.posts.sort('date').each(function(post) {
-      post.categories.each(function(cat) { if (cat.name === page.title) notes.push(post); });
-    }); } %>
+    <% var notes = notes_for(page.title); %>
     <% if (notes.length) { %>
       <h2>章节</h2>
       <ul>
