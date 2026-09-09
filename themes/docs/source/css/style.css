@@ -216,6 +216,12 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
   background: #fff;
 }
 
+.home-section,
+.knowledge-panel,
+.topic-card {
+  scroll-margin-top: calc(var(--header) + 12px);
+}
+
 .home-section {
   margin-bottom: 36px;
 }
@@ -224,6 +230,49 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
   margin: 0 0 16px;
   font-size: 20px;
   letter-spacing: -0.03em;
+}
+
+.knowledge-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.knowledge-panel {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+}
+
+.knowledge-panel header {
+  padding: 16px 16px 12px;
+}
+
+.knowledge-panel h3 {
+  margin: 0 0 6px;
+  font-size: 15px;
+}
+
+.knowledge-panel header p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.knowledge-slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 280px;
+  margin: 0 12px 12px;
+  border-radius: 8px;
+  background: var(--soft);
+  color: var(--muted);
+  font-size: 13px;
 }
 
 .card-grid {
@@ -346,7 +395,8 @@ figure.highlight .gutter {
 }
 
 @media (max-width: 900px) {
-  .card-grid { grid-template-columns: 1fr; }
+  .card-grid,
+  .knowledge-grid { grid-template-columns: 1fr; }
   .nav-toggle { display: inline-flex; }
   .menu-links { display: none; }
   body.menu-open .menu-links {

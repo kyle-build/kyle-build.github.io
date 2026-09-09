@@ -1,3 +1,20 @@
+<section class="home-section" id="knowledge">
+  <h2>知识总览</h2>
+  <div class="knowledge-grid">
+    <% (site.data.knowledge || []).forEach(function(item) { %>
+      <article class="knowledge-panel" id="<%= item.id %>">
+        <header>
+          <h3><%= item.title %></h3>
+          <p><%= item.summary %></p>
+        </header>
+        <div class="knowledge-slot" data-slot="<%= item.id %>" aria-label="<%= item.title %>占位">
+          <span><%= item.empty %></span>
+        </div>
+      </article>
+    <% }) %>
+  </div>
+</section>
+
 <section class="home-section" id="learning">
   <h2>学习笔记</h2>
   <div class="card-grid">
