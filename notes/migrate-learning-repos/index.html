@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>如何把 learning 仓库迁到本站 · Kyle</title>
+  <meta name="description" content="把分散在 GitHub 上的 learning 仓库，收敛成一份可检索的技术笔记。">
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-doc">
+  
+<header class="top">
+  <a class="brand" href="/">Kyle</a>
+  <button class="nav-toggle" type="button" aria-label="打开目录">目录</button>
+  <nav class="menu-links">
+    
+      <a href="/" class="is-active">首页</a>
+    
+      <a href="/learning/react/" class="">React</a>
+    
+      <a href="/learning/javascript/" class="">JavaScript</a>
+    
+      <a href="/learning/vue/" class="">Vue</a>
+    
+      <a href="/learning/lynx/" class="">Lynx</a>
+    
+      <a href="/learning/go/" class="">Go</a>
+    
+      <a href="/learning/linux/" class="">Linux</a>
+    
+      <a href="/learning/git/" class="">Git</a>
+    
+      <a href="/interview/" class="">Interview</a>
+    
+  </nav>
+  <div class="top-actions">
+    <form class="search" action="/" method="get" role="search">
+      <input id="search-input" type="search" placeholder="Search" autocomplete="off">
+      <div id="search-result" class="search-result" hidden></div>
+    </form>
+    <a class="github" href="https://github.com/kyle-build" target="_blank" rel="noopener" aria-label="GitHub">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+        <path fill="currentColor" d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.1c-3.3.7-4-1.6-4-1.6-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.7-2.8 5.7-5.5 6 .4.3.8 1 .8 2.1v3.1c0 .3.2.7.8.6A12 12 0 0 0 12 .3z"/>
+      </svg>
+    </a>
+  </div>
+</header>
+
+  <div class="shell">
+    <div class="sidebar-backdrop"></div>
+    
+<aside class="sidebar">
+  
+    <p class="sidebar-title">目录</p>
+    <ul>
+      <li><a href="/">返回首页</a></li>
+    </ul>
+  
+</aside>
+
+    <main class="main">
+      <article class="article">
+  <div class="crumb">
+    
+      
+        站点
+      
+      →
+    
+  </div>
+  <h1>如何把 learning 仓库迁到本站</h1>
+  <div class="prose">
+    <p>约定很简单：仓库里留可运行的实验，站点里留能检索的结论。</p>
+<h2 id="1-一篇笔记对应一个主题"><a href="#1-一篇笔记对应一个主题" class="headerlink" title="1. 一篇笔记对应一个主题"></a>1. 一篇笔记对应一个主题</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx hexo new <span class="string">&quot;React Scheduler 为什么不用微任务&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>文章头部带上轨道名，分类会生成对应页面：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">categories:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">React</span></span><br></pre></td></tr></table></figure>
+
+<p>可用的轨道名：<code>React</code>、<code>JavaScript</code>、<code>Vue</code>、<code>Lynx</code>、<code>Go</code>、<code>Linux</code>、<code>Git</code>。</p>
+<h2 id="2-从仓库搬什么、不搬什么"><a href="#2-从仓库搬什么、不搬什么" class="headerlink" title="2. 从仓库搬什么、不搬什么"></a>2. 从仓库搬什么、不搬什么</h2><p>迁入：</p>
+<ul>
+<li>已经稳定的机制解释</li>
+<li>自己踩过的结论和反例</li>
+<li>能独立阅读的章节</li>
+</ul>
+<p>留在仓库：</p>
+<ul>
+<li><code>mini-react</code> 这类可运行实验</li>
+<li>半成品草稿</li>
+<li>依赖本地环境才能看懂的代码树</li>
+</ul>
+<h2 id="3-仓库索引"><a href="#3-仓库索引" class="headerlink" title="3. 仓库索引"></a>3. 仓库索引</h2><p>完整列表在 <a href="/repos/">仓库页</a>，GitHub 主页是 <a target="_blank" rel="noopener" href="https://github.com/kyle-build?tab=repositories">kyle-build</a>。</p>
+
+  </div>
+</article>
+
+    </main>
+  </div>
+  <button class="to-top" type="button" aria-label="回到顶部">↑</button>
+  <script src="/js/main.js"></script>
+</body>
+</html>
